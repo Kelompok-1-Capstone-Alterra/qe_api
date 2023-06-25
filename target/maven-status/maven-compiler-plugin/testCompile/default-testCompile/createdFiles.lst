@@ -1,0 +1,9 @@
+starter\API\Suggestions.class
+starter\stepdefinitions\MembershipSteps.class
+starter\API\EmHome.class
+starter\stepdefinitions\EmHomeSteps.class
+starter\stepdefinitions\SuggestionsSteps.class
+starter\API\Settings.class
+starter\API\Membership.class
+starter\CucumberTestSuite.class
+starter\stepdefinitions\SettingsSteps.class

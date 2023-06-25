@@ -1,0 +1,1724 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Features</title>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<!--[if IE 7]>
+<!--<link rel="stylesheet" href="font-awesome/css/font-awesome-ie7.min.css">-->
+
+<link rel="stylesheet" type="text/css" href="fontawesome-free-5.7.2-web/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="fontawesome-free-5.7.2-web/css/v4-shims.min.css">
+
+<!-- JQuery -->
+<script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script><link rel="stylesheet" type="text/css" href="chartist/chartist-plugin-tooltip/dist/chartist-plugin-tooltip.min.css">
+<link rel="stylesheet" type="text/css" href="chartist/dist/chartist.min.css">
+<script src="chartist/dist/chartist.min.js"></script>
+<script src="chartist/chartist-plugin-tooltip/dist/chartist-plugin-tooltip.min.js"></script>
+<!-- Required Stylesheets -->
+<link href="bootstrap-treeview/dist/bootstrap-treeview.min.css" rel="stylesheet">
+
+<!-- Required Javascript -->
+<script src="bootstrap-treeview/dist/bootstrap-treeview.min.js"></script><!-- DataTables -->
+<link type="text/css" href="datatables/1.10.20/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/1.10.20/datatables.min.js"></script>
+<script type="text/javascript" src="datatables/1.10.20/time-elapsed-dhms.js"></script>
+
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="datatables/1.10.20/datatables.bootstrap4.min.js"></script>
+<link type="text/css" href="datatables/1.10.20/datatables.bootstrap4.min.css" rel="stylesheet" />
+
+<script>
+    jQuery.fn.dataTable.ext.type.order['time-elapsed-dhms-pre'] = function(data) {
+
+        var matches = data.match(/^(\d+(?:\.\d+)?)\s*([a-z]+)/i);
+        var multipliers = {
+            ms: 1,
+            s: 1000,
+            m: 60000,
+            h: 3600000,
+            d: 86400000
+        };
+
+        if (matches) {
+            var multiplier = multipliers[matches[2].toLowerCase()];
+            return parseFloat(matches[1]) * multiplier;
+        } else {
+            return -1;
+        };
+    };
+</script>
+<link rel="stylesheet" href="css/core.css"/>
+<link rel="stylesheet" href="css/link.css"/>
+<link type="text/css" media="screen" href="css/screen.css" rel="Stylesheet"/><!-- JQuery-UI -->
+<link type="text/css" href="jqueryui/1.11.2-start/jquery-ui.min.css" rel="Stylesheet" />
+<script type="text/javascript" src="jqueryui/1.11.2-start/jquery-ui.min.js"></script><!-- DataTables -->
+<link type="text/css" href="datatables/1.10.20/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/1.10.20/datatables.min.js"></script>
+<script type="text/javascript" src="datatables/1.10.20/time-elapsed-dhms.js"></script>
+
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="datatables/1.10.20/datatables.bootstrap4.min.js"></script>
+<link type="text/css" href="datatables/1.10.20/datatables.bootstrap4.min.css" rel="stylesheet" />
+
+<script>
+    jQuery.fn.dataTable.ext.type.order['time-elapsed-dhms-pre'] = function(data) {
+
+        var matches = data.match(/^(\d+(?:\.\d+)?)\s*([a-z]+)/i);
+        var multipliers = {
+            ms: 1,
+            s: 1000,
+            m: 60000,
+            h: 3600000,
+            d: 86400000
+        };
+
+        if (matches) {
+            var multiplier = multipliers[matches[2].toLowerCase()];
+            return parseFloat(matches[1]) * multiplier;
+        } else {
+            return -1;
+        };
+    };
+</script>
+
+
+
+    <script>
+
+        $(document).ready(function () {
+
+            var scenarioTable = $('.scenario-result-table').DataTable({
+
+                "order": [],
+                "language": {
+                    searchPlaceholder: "Filter",
+                    search: ""
+                }
+            });
+
+            $('.example-table table').DataTable({
+                searching: false,
+                ordering: false,
+                paging: false,
+                info: false
+            });
+
+            $('.example-table-in-scenario table').DataTable({
+                searching: false,
+                ordering: false,
+                paging: false,
+                info: false
+            });
+
+            $('#evidence-table').DataTable(
+                {
+                    searching: false,
+                    ordering: false,
+                    paging: false,
+                    info: false
+                }
+            );
+
+
+            $(".scenario-docs .card-body table").wrap("<div class='table-responsive'></div>");
+
+            $("#requirements-tabs").tabs();
+            $("#test-tabs").tabs();
+
+            var requirementsTree = [{"text":"Membership","type":"feature","href":"bd40f0316a3fe79b62d022cd1bd6b086c84069b34d6d4c195e86ee6201221ec7.html","nodes":[],"selectable":false,"tags":["\u003ca href\u003d\u0027##beforetable\u0027\u003e\u003ci class\u003d\u0027far fa-stop-circle pending-icon \u0027 title\u003d\u0027PENDING\u0027\u003e\u003c/i\u003e\u003c/a\u003e",""]}];
+
+            $('#tree').treeview({
+                data: requirementsTree,
+                enableLinks: true,
+                levels:10,
+                showTags: true,
+                expandIcon: "glyphicon glyphicon-folder-close",
+                collapseIcon: "glyphicon glyphicon-folder-open",
+                emptyIcon: "glyphicon glyphicon-book"
+            });
+
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $(".scenario-docs > div > p").html(function () {
+                var text = $(this).text().trim().split(" ");
+                var first = text.shift();
+                return (text.length > 0 ? "<strong>" + first + "</strong> " : first) + text.join(" ");
+            });
+        });
+    </script>
+</head>
+
+<body class="results-page">
+<div id="topheader">
+    <div id="topbanner">
+        <div id="logo"><a href="index.html"><img src="images/serenity-logo.png" border="0"/></a></div>
+        <div id="projectname-banner" style="float:right">
+            <span class="projectname">
+                <span class="projecttitle"></span>
+                <span class="projectsubtitle"></span>
+            </span>
+        </div>
+    </div>
+</div>
+
+
+<div class="middlecontent">
+    <div id="contenttop">
+        <div class="middlebg">
+            <span class="breadcrumbs">
+            <a href='index.html'>Home</a> > <a href="capabilities.html">Requirements</a>
+
+
+
+                    > <span class="truncate-40">Membership</span>
+
+            </span>
+        </div>
+        <div class="rightbg"></div>
+    </div>
+    <div class="clr"></div>
+
+    <!--/* starts second table*/-->
+
+<div>
+    <ul class="nav nav-tabs" role="tablist">
+        <li >
+            <a href="index.html"><i class="fa fa-check-square-o"></i> Overall Test Results</a>
+        </li>
+        <li >
+            <a href="capabilities.html"><i class="fa fa-book"></i> Requirements</a>
+        </li>
+        <li class="active">
+            <a href="#"><i class="fa fa-comments-o"></i> Features</a>
+        </li>
+    </ul>
+    <span class="date-and-time"><a href="build-info.html"><i class="fa fa-info-circle"></i></a> Report generated </span>
+    <br style="clear:left"/>
+</div>
+
+    <div class="clr"></div>
+
+    <div id="beforetable"></div>
+    <div id="results-dashboard">
+        <div class="table">
+            <div class=row">
+                <div class="col-sm-12">
+                    <div>
+                        <div clas="table">
+                            <div class="row">
+                                    <div class="col-sm-12">
+                                        <span>
+                                            <h2><i class="fa fa-book"></i> Feature:  Membership</h2>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="requirementNarrativeTitle">
+                                As a admin<br />
+I want to see the products<br />
+So that I can request endpoints register and login
+                            </div>
+
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-sm-12">
+
+                        <!-- Requirements result tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a data-toggle="tab" href="#specs"><i class="fas fa-comments"></i> Specifications</a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" href="#results"><i class="fas fa-tachometer-alt"></i> Test Results</a>
+                            </li>
+                        </ul>
+
+                        <!-- Specifications and Results tabs -->
+                        <div class="card border">
+                            <div class="tab-content" id="pills-tabContent">
+                                <div id="specs" class="tab-pane fade in active">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+
+                                                    <!--- TOC --->
+                                                    <div id="toc">
+                                                        <h3>Overview</h3>
+                                                        <table class="table" id="toc-table">
+                                                                        <tr>
+                                                                            <td style="width:95%;" class="toc-title">
+                                                                                <span class="orphan-scenario-toc-entry">
+                                                                                    <a href="#c2d77bebc5ac6426398f69fa6be50f09e4c0e39632d3ff4a5f8306b285c08a97" title="View scenario details">
+                                                                                        <i class="far fa-comment-dots"></i> Scenario: POST - Register with valid data data and endpoint
+                                                                                    </a>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td style="width:5%;">
+                                                                                <table>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                                
+                                                                                                
+
+
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td style="width:95%;" class="toc-title">
+                                                                                <span class="orphan-scenario-toc-entry">
+                                                                                    <a href="#6f04c96e8ccffb9af77b8c532b213740b996c6ab060f329271c1775c496ff731" title="View scenario details">
+                                                                                        <i class="far fa-comment-dots"></i> Scenario: POST - Register with invalid email format
+                                                                                    </a>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td style="width:5%;">
+                                                                                <table>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                                
+                                                                                                
+
+
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td style="width:95%;" class="toc-title">
+                                                                                <span class="orphan-scenario-toc-entry">
+                                                                                    <a href="#e628b97b2a3af4148e1112c902f8e7060222cfd779160a9ab5e857af42087720" title="View scenario details">
+                                                                                        <i class="far fa-comment-dots"></i> Scenario: POST - Register without using email
+                                                                                    </a>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td style="width:5%;">
+                                                                                <table>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                                
+                                                                                                
+
+
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td style="width:95%;" class="toc-title">
+                                                                                <span class="orphan-scenario-toc-entry">
+                                                                                    <a href="#480e44978ddd0a2c7e767a52d229cb9fdfb91bb740479f89c316cdf48edb2381" title="View scenario details">
+                                                                                        <i class="far fa-comment-dots"></i> Scenario: POST - Register without using password
+                                                                                    </a>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td style="width:5%;">
+                                                                                <table>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                                
+                                                                                                
+
+
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td style="width:95%;" class="toc-title">
+                                                                                <span class="orphan-scenario-toc-entry">
+                                                                                    <a href="#9328dd5a094224f4b5959ec7e91a1395602f1a24bc0b6ff023c86ec8c6179e6a" title="View scenario details">
+                                                                                        <i class="far fa-comment-dots"></i> Scenario: POST - Register using email that has been registered
+                                                                                    </a>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td style="width:5%;">
+                                                                                <table>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                                
+                                                                                                
+
+
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td style="width:95%;" class="toc-title">
+                                                                                <span class="orphan-scenario-toc-entry">
+                                                                                    <a href="#1068040c5bd46044f311a7f849ab2d1741eb13c4bcdbc0530b734e04f37d8720" title="View scenario details">
+                                                                                        <i class="far fa-comment-dots"></i> Scenario: POST - Register with a password of less than 8 characters
+                                                                                    </a>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td style="width:5%;">
+                                                                                <table>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                                
+                                                                                                
+
+
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td style="width:95%;" class="toc-title">
+                                                                                <span class="orphan-scenario-toc-entry">
+                                                                                    <a href="#4d2b352192be56ee3fea85db2ed79212b03f4b6b26a470a759cf5fad9e6e37c9" title="View scenario details">
+                                                                                        <i class="far fa-comment-dots"></i> Scenario: POST - Register with invalid endpoint
+                                                                                    </a>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td style="width:5%;">
+                                                                                <table>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                                
+                                                                                                
+
+
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td style="width:95%;" class="toc-title">
+                                                                                <span class="orphan-scenario-toc-entry">
+                                                                                    <a href="#c037cc85b2b916b9256df3f48b8c84a589384e55295976dd4f47a16efb1f5b6d" title="View scenario details">
+                                                                                        <i class="far fa-comment-dots"></i> Scenario: POST - Login with a valid data and endpoint
+                                                                                    </a>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td style="width:5%;">
+                                                                                <table>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                                
+                                                                                                
+
+
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td style="width:95%;" class="toc-title">
+                                                                                <span class="orphan-scenario-toc-entry">
+                                                                                    <a href="#33d40aac69ab810f2ebd0ab1b3f03f2352fef833d6f1480364a2c6c30391f520" title="View scenario details">
+                                                                                        <i class="far fa-comment-dots"></i> Scenario: POST - Login with an incorrect email
+                                                                                    </a>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td style="width:5%;">
+                                                                                <table>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                                
+                                                                                                
+
+
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td style="width:95%;" class="toc-title">
+                                                                                <span class="orphan-scenario-toc-entry">
+                                                                                    <a href="#443837d6ef2302698fef60f9774acc9e9493a9e6ba530458f84be991625126f9" title="View scenario details">
+                                                                                        <i class="far fa-comment-dots"></i> Scenario: POST - Login with an incorrect password
+                                                                                    </a>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td style="width:5%;">
+                                                                                <table>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                                
+                                                                                                
+
+
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td style="width:95%;" class="toc-title">
+                                                                                <span class="orphan-scenario-toc-entry">
+                                                                                    <a href="#65b2291d0fe8f2f2dd16d6ae48ff69d7db4ab157732cd0d37ee417b2bd46d749" title="View scenario details">
+                                                                                        <i class="far fa-comment-dots"></i> Scenario: POST - Login with an unregistered email
+                                                                                    </a>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td style="width:5%;">
+                                                                                <table>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                                
+                                                                                                
+
+
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td style="width:95%;" class="toc-title">
+                                                                                <span class="orphan-scenario-toc-entry">
+                                                                                    <a href="#7fed63de9d0922606c72d078d2d29f7a520eef40fc67f930e00ca4737632335d" title="View scenario details">
+                                                                                        <i class="far fa-comment-dots"></i> Scenario: POST - Login with an empty email
+                                                                                    </a>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td style="width:5%;">
+                                                                                <table>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                                
+                                                                                                
+
+
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td style="width:95%;" class="toc-title">
+                                                                                <span class="orphan-scenario-toc-entry">
+                                                                                    <a href="#44ef6d5144ae23000b97092cd7b959dc693725e932a31348f7acaa43dfdbd50f" title="View scenario details">
+                                                                                        <i class="far fa-comment-dots"></i> Scenario: POST - Login with an empty password
+                                                                                    </a>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td style="width:5%;">
+                                                                                <table>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                                
+                                                                                                
+
+
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td style="width:95%;" class="toc-title">
+                                                                                <span class="orphan-scenario-toc-entry">
+                                                                                    <a href="#90d3755e022524ccd817fc142e2a92b20fa03f21e59350cbe7b37bdfcfce7616" title="View scenario details">
+                                                                                        <i class="far fa-comment-dots"></i> Scenario: GET - Check Email Valid with valid email has been register
+                                                                                    </a>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td style="width:5%;">
+                                                                                <table>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                                
+                                                                                                
+
+
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td style="width:95%;" class="toc-title">
+                                                                                <span class="orphan-scenario-toc-entry">
+                                                                                    <a href="#77df6109df2ce6052c63020e317b462d473c65e80ba12ab0fbd6093f129e672f" title="View scenario details">
+                                                                                        <i class="far fa-comment-dots"></i> Scenario: GET - Check Email Valid with email has not been register
+                                                                                    </a>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td style="width:5%;">
+                                                                                <table>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                                
+                                                                                                
+
+
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td style="width:95%;" class="toc-title">
+                                                                                <span class="orphan-scenario-toc-entry">
+                                                                                    <a href="#8e6247aecfa677d2a59f42cdc8f119c20411736ef1261dce98f705e4db3f6d83" title="View scenario details">
+                                                                                        <i class="far fa-comment-dots"></i> Scenario: GET - Check Email Valid with empty email
+                                                                                    </a>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td style="width:5%;">
+                                                                                <table>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                                
+                                                                                                
+
+
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td style="width:95%;" class="toc-title">
+                                                                                <span class="orphan-scenario-toc-entry">
+                                                                                    <a href="#565028a84bd8281af5113988b858a76adf22d0c4ff9ad5d6f1ef9f811268048c" title="View scenario details">
+                                                                                        <i class="far fa-comment-dots"></i> Scenario: GET - Check Email Valid with invalid format email
+                                                                                    </a>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td style="width:5%;">
+                                                                                <table>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                                
+                                                                                                
+
+
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td style="width:95%;" class="toc-title">
+                                                                                <span class="orphan-scenario-toc-entry">
+                                                                                    <a href="#229bb316f09d8ae402ce76a4daba66f1adef0651422a25b9162de12923482d3a" title="View scenario details">
+                                                                                        <i class="far fa-comment-dots"></i> Scenario: PUT - Reset Password with vallid id
+                                                                                    </a>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td style="width:5%;">
+                                                                                <table>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                                
+                                                                                                
+
+
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td style="width:95%;" class="toc-title">
+                                                                                <span class="orphan-scenario-toc-entry">
+                                                                                    <a href="#d205bd0b77dc7d73f77c30cee82f3ae6b7ca50642f3fa2ea3de4375c176c5477" title="View scenario details">
+                                                                                        <i class="far fa-comment-dots"></i> Scenario: PUT - Reset Password with invalid id/email has not been registered
+                                                                                    </a>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td style="width:5%;">
+                                                                                <table>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                                
+                                                                                                
+
+
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td style="width:95%;" class="toc-title">
+                                                                                <span class="orphan-scenario-toc-entry">
+                                                                                    <a href="#73c3653fcdc32469409982a8952e82685f8b84fefe2c8910f8ac7d1d94abd2f9" title="View scenario details">
+                                                                                        <i class="far fa-comment-dots"></i> Scenario: PUT - Reset Password with new password less than 8 characters
+                                                                                    </a>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td style="width:5%;">
+                                                                                <table>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                                
+                                                                                                
+
+
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td style="width:95%;" class="toc-title">
+                                                                                <span class="orphan-scenario-toc-entry">
+                                                                                    <a href="#bc987bf19530ed67b5544df3c33aa055dcb1e706e7790a775ae346aa86adabd0" title="View scenario details">
+                                                                                        <i class="far fa-comment-dots"></i> Scenario: PUT - Reset Password with empty on new password
+                                                                                    </a>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td style="width:5%;">
+                                                                                <table>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                                
+                                                                                                
+
+
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td style="width:95%;" class="toc-title">
+                                                                                <span class="orphan-scenario-toc-entry">
+                                                                                    <a href="#aec0dd73e02d622e73a734f0d8083609db4c55f3b6579a30d69cf61a964bd80d" title="View scenario details">
+                                                                                        <i class="far fa-comment-dots"></i> Scenario: PUT - Reset with the previous password
+                                                                                    </a>
+                                                                                </span>
+                                                                            </td>
+                                                                            <td style="width:5%;">
+                                                                                <table>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                                
+                                                                                                
+
+
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                        </tr>
+                                                        </table>
+                                                    </div>
+                                                    <!--- END OF TOC --->
+
+                                                    <h3>Scenarios</h3>
+
+                                                        <a name="62a92ba6-bb24-4e2d-be94-5573717769e4" ></a>
+
+
+                                                            <div class="scenario-docs card" id="c2d77bebc5ac6426398f69fa6be50f09e4c0e39632d3ff4a5f8306b285c08a97">
+                                                                <div class="scenario-docs card-header undefined"
+                                                                     style="min-height:1.5em;">
+                                                                    <div>
+                                                            <span class="scenario-heading">
+                                                                <a href=""
+                                                                   title="View test results">Scenario: POST - Register with valid data data and endpoint</a>
+                                                            </span>
+                                                                        <span class="scenario-result-icon">
+                                                                
+
+                                                                                <i class="fas fa-pause"
+                                                                                   title="No test has been implemented yet"></i>
+                                                            </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="scenario-docs card-body">
+                                                                        <p>Given I set POST api endpoints register Membership</p>
+                                                                        <p>When I send POST HTTP request register Membership</p>
+                                                                        <p>Then I receive valid HTTP response code 400</p>
+                                                                    <div class="examples">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="scenario-docs card" id="6f04c96e8ccffb9af77b8c532b213740b996c6ab060f329271c1775c496ff731">
+                                                                <div class="scenario-docs card-header undefined"
+                                                                     style="min-height:1.5em;">
+                                                                    <div>
+                                                            <span class="scenario-heading">
+                                                                <a href=""
+                                                                   title="View test results">Scenario: POST - Register with invalid email format</a>
+                                                            </span>
+                                                                        <span class="scenario-result-icon">
+                                                                
+
+                                                                                <i class="fas fa-pause"
+                                                                                   title="No test has been implemented yet"></i>
+                                                            </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="scenario-docs card-body">
+                                                                        <p>Given I set POST api endpoints register Membership</p>
+                                                                        <p>When I send POST HTTP request register2 Membership</p>
+                                                                        <p>Then I receive valid HTTP response code 400</p>
+                                                                    <div class="examples">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="scenario-docs card" id="e628b97b2a3af4148e1112c902f8e7060222cfd779160a9ab5e857af42087720">
+                                                                <div class="scenario-docs card-header undefined"
+                                                                     style="min-height:1.5em;">
+                                                                    <div>
+                                                            <span class="scenario-heading">
+                                                                <a href=""
+                                                                   title="View test results">Scenario: POST - Register without using email</a>
+                                                            </span>
+                                                                        <span class="scenario-result-icon">
+                                                                
+
+                                                                                <i class="fas fa-pause"
+                                                                                   title="No test has been implemented yet"></i>
+                                                            </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="scenario-docs card-body">
+                                                                        <p>Given I set POST api endpoints register Membership</p>
+                                                                        <p>When I send POST HTTP request register3 Membership</p>
+                                                                        <p>Then I receive valid HTTP response code 400</p>
+                                                                    <div class="examples">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="scenario-docs card" id="480e44978ddd0a2c7e767a52d229cb9fdfb91bb740479f89c316cdf48edb2381">
+                                                                <div class="scenario-docs card-header undefined"
+                                                                     style="min-height:1.5em;">
+                                                                    <div>
+                                                            <span class="scenario-heading">
+                                                                <a href=""
+                                                                   title="View test results">Scenario: POST - Register without using password</a>
+                                                            </span>
+                                                                        <span class="scenario-result-icon">
+                                                                
+
+                                                                                <i class="fas fa-pause"
+                                                                                   title="No test has been implemented yet"></i>
+                                                            </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="scenario-docs card-body">
+                                                                        <p>Given I set POST api endpoints register Membership</p>
+                                                                        <p>When I send POST HTTP request register4 Membership</p>
+                                                                        <p>Then I receive valid HTTP response code 400</p>
+                                                                    <div class="examples">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="scenario-docs card" id="9328dd5a094224f4b5959ec7e91a1395602f1a24bc0b6ff023c86ec8c6179e6a">
+                                                                <div class="scenario-docs card-header undefined"
+                                                                     style="min-height:1.5em;">
+                                                                    <div>
+                                                            <span class="scenario-heading">
+                                                                <a href=""
+                                                                   title="View test results">Scenario: POST - Register using email that has been registered</a>
+                                                            </span>
+                                                                        <span class="scenario-result-icon">
+                                                                
+
+                                                                                <i class="fas fa-pause"
+                                                                                   title="No test has been implemented yet"></i>
+                                                            </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="scenario-docs card-body">
+                                                                        <p>Given I set POST api endpoints register Membership</p>
+                                                                        <p>When I send POST HTTP request register5 Membership</p>
+                                                                        <p>Then I receive valid HTTP response code 400</p>
+                                                                    <div class="examples">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="scenario-docs card" id="1068040c5bd46044f311a7f849ab2d1741eb13c4bcdbc0530b734e04f37d8720">
+                                                                <div class="scenario-docs card-header undefined"
+                                                                     style="min-height:1.5em;">
+                                                                    <div>
+                                                            <span class="scenario-heading">
+                                                                <a href=""
+                                                                   title="View test results">Scenario: POST - Register with a password of less than 8 characters</a>
+                                                            </span>
+                                                                        <span class="scenario-result-icon">
+                                                                
+
+                                                                                <i class="fas fa-pause"
+                                                                                   title="No test has been implemented yet"></i>
+                                                            </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="scenario-docs card-body">
+                                                                        <p>Given I set POST api endpoints register Membership</p>
+                                                                        <p>When I send POST HTTP request register6 Membership</p>
+                                                                        <p>Then I receive valid HTTP response code 400</p>
+                                                                    <div class="examples">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="scenario-docs card" id="4d2b352192be56ee3fea85db2ed79212b03f4b6b26a470a759cf5fad9e6e37c9">
+                                                                <div class="scenario-docs card-header undefined"
+                                                                     style="min-height:1.5em;">
+                                                                    <div>
+                                                            <span class="scenario-heading">
+                                                                <a href=""
+                                                                   title="View test results">Scenario: POST - Register with invalid endpoint</a>
+                                                            </span>
+                                                                        <span class="scenario-result-icon">
+                                                                
+
+                                                                                <i class="fas fa-pause"
+                                                                                   title="No test has been implemented yet"></i>
+                                                            </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="scenario-docs card-body">
+                                                                        <p>Given I set POST api endpoints register2 Membership</p>
+                                                                        <p>When I send POST HTTP request register7 Membership</p>
+                                                                        <p>Then I receive valid HTTP response code 404</p>
+                                                                    <div class="examples">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="scenario-docs card" id="c037cc85b2b916b9256df3f48b8c84a589384e55295976dd4f47a16efb1f5b6d">
+                                                                <div class="scenario-docs card-header undefined"
+                                                                     style="min-height:1.5em;">
+                                                                    <div>
+                                                            <span class="scenario-heading">
+                                                                <a href=""
+                                                                   title="View test results">Scenario: POST - Login with a valid data and endpoint</a>
+                                                            </span>
+                                                                        <span class="scenario-result-icon">
+                                                                
+
+                                                                                <i class="fas fa-pause"
+                                                                                   title="No test has been implemented yet"></i>
+                                                            </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="scenario-docs card-body">
+                                                                        <p>Given I set POST api endpoints login Membership</p>
+                                                                        <p>When I send POST HTTP request login Membership</p>
+                                                                        <p>Then I receive valid HTTP response code 200</p>
+                                                                    <div class="examples">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="scenario-docs card" id="33d40aac69ab810f2ebd0ab1b3f03f2352fef833d6f1480364a2c6c30391f520">
+                                                                <div class="scenario-docs card-header undefined"
+                                                                     style="min-height:1.5em;">
+                                                                    <div>
+                                                            <span class="scenario-heading">
+                                                                <a href=""
+                                                                   title="View test results">Scenario: POST - Login with an incorrect email</a>
+                                                            </span>
+                                                                        <span class="scenario-result-icon">
+                                                                
+
+                                                                                <i class="fas fa-pause"
+                                                                                   title="No test has been implemented yet"></i>
+                                                            </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="scenario-docs card-body">
+                                                                        <p>Given I set POST api endpoints login Membership</p>
+                                                                        <p>When I send POST HTTP request login2 Membership</p>
+                                                                        <p>Then I receive valid HTTP response code 401</p>
+                                                                    <div class="examples">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="scenario-docs card" id="443837d6ef2302698fef60f9774acc9e9493a9e6ba530458f84be991625126f9">
+                                                                <div class="scenario-docs card-header undefined"
+                                                                     style="min-height:1.5em;">
+                                                                    <div>
+                                                            <span class="scenario-heading">
+                                                                <a href=""
+                                                                   title="View test results">Scenario: POST - Login with an incorrect password</a>
+                                                            </span>
+                                                                        <span class="scenario-result-icon">
+                                                                
+
+                                                                                <i class="fas fa-pause"
+                                                                                   title="No test has been implemented yet"></i>
+                                                            </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="scenario-docs card-body">
+                                                                        <p>Given I set POST api endpoints login Membership</p>
+                                                                        <p>When I send POST HTTP request login3 Membership</p>
+                                                                        <p>Then I receive valid HTTP response code 401</p>
+                                                                    <div class="examples">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="scenario-docs card" id="65b2291d0fe8f2f2dd16d6ae48ff69d7db4ab157732cd0d37ee417b2bd46d749">
+                                                                <div class="scenario-docs card-header undefined"
+                                                                     style="min-height:1.5em;">
+                                                                    <div>
+                                                            <span class="scenario-heading">
+                                                                <a href=""
+                                                                   title="View test results">Scenario: POST - Login with an unregistered email</a>
+                                                            </span>
+                                                                        <span class="scenario-result-icon">
+                                                                
+
+                                                                                <i class="fas fa-pause"
+                                                                                   title="No test has been implemented yet"></i>
+                                                            </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="scenario-docs card-body">
+                                                                        <p>Given I set POST api endpoints login Membership</p>
+                                                                        <p>When I send POST HTTP request login4 Membership</p>
+                                                                        <p>Then I receive valid HTTP response code 401</p>
+                                                                    <div class="examples">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="scenario-docs card" id="7fed63de9d0922606c72d078d2d29f7a520eef40fc67f930e00ca4737632335d">
+                                                                <div class="scenario-docs card-header undefined"
+                                                                     style="min-height:1.5em;">
+                                                                    <div>
+                                                            <span class="scenario-heading">
+                                                                <a href=""
+                                                                   title="View test results">Scenario: POST - Login with an empty email</a>
+                                                            </span>
+                                                                        <span class="scenario-result-icon">
+                                                                
+
+                                                                                <i class="fas fa-pause"
+                                                                                   title="No test has been implemented yet"></i>
+                                                            </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="scenario-docs card-body">
+                                                                        <p>Given I set POST api endpoints login Membership</p>
+                                                                        <p>When I send POST HTTP request login5 Membership</p>
+                                                                        <p>Then I receive valid HTTP response code 401</p>
+                                                                    <div class="examples">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="scenario-docs card" id="44ef6d5144ae23000b97092cd7b959dc693725e932a31348f7acaa43dfdbd50f">
+                                                                <div class="scenario-docs card-header undefined"
+                                                                     style="min-height:1.5em;">
+                                                                    <div>
+                                                            <span class="scenario-heading">
+                                                                <a href=""
+                                                                   title="View test results">Scenario: POST - Login with an empty password</a>
+                                                            </span>
+                                                                        <span class="scenario-result-icon">
+                                                                
+
+                                                                                <i class="fas fa-pause"
+                                                                                   title="No test has been implemented yet"></i>
+                                                            </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="scenario-docs card-body">
+                                                                        <p>Given I set POST api endpoints login Membership</p>
+                                                                        <p>When I send POST HTTP request login6 Membership</p>
+                                                                        <p>Then I receive valid HTTP response code 401</p>
+                                                                    <div class="examples">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="scenario-docs card" id="90d3755e022524ccd817fc142e2a92b20fa03f21e59350cbe7b37bdfcfce7616">
+                                                                <div class="scenario-docs card-header undefined"
+                                                                     style="min-height:1.5em;">
+                                                                    <div>
+                                                            <span class="scenario-heading">
+                                                                <a href=""
+                                                                   title="View test results">Scenario: GET - Check Email Valid with valid email has been register</a>
+                                                            </span>
+                                                                        <span class="scenario-result-icon">
+                                                                
+
+                                                                                <i class="fas fa-pause"
+                                                                                   title="No test has been implemented yet"></i>
+                                                            </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="scenario-docs card-body">
+                                                                        <p>Given I set GET api endpoints check email Membership</p>
+                                                                        <p>When I send GET HTTP request check email Membership</p>
+                                                                        <p>Then I receive valid HTTP response code 200</p>
+                                                                    <div class="examples">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="scenario-docs card" id="77df6109df2ce6052c63020e317b462d473c65e80ba12ab0fbd6093f129e672f">
+                                                                <div class="scenario-docs card-header undefined"
+                                                                     style="min-height:1.5em;">
+                                                                    <div>
+                                                            <span class="scenario-heading">
+                                                                <a href=""
+                                                                   title="View test results">Scenario: GET - Check Email Valid with email has not been register</a>
+                                                            </span>
+                                                                        <span class="scenario-result-icon">
+                                                                
+
+                                                                                <i class="fas fa-pause"
+                                                                                   title="No test has been implemented yet"></i>
+                                                            </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="scenario-docs card-body">
+                                                                        <p>Given I set GET api endpoints check email Membership</p>
+                                                                        <p>When I send GET HTTP request check email2 Membership</p>
+                                                                        <p>Then I receive valid HTTP response code 404</p>
+                                                                    <div class="examples">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="scenario-docs card" id="8e6247aecfa677d2a59f42cdc8f119c20411736ef1261dce98f705e4db3f6d83">
+                                                                <div class="scenario-docs card-header undefined"
+                                                                     style="min-height:1.5em;">
+                                                                    <div>
+                                                            <span class="scenario-heading">
+                                                                <a href=""
+                                                                   title="View test results">Scenario: GET - Check Email Valid with empty email</a>
+                                                            </span>
+                                                                        <span class="scenario-result-icon">
+                                                                
+
+                                                                                <i class="fas fa-pause"
+                                                                                   title="No test has been implemented yet"></i>
+                                                            </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="scenario-docs card-body">
+                                                                        <p>Given I set GET api endpoints check email Membership</p>
+                                                                        <p>When I send GET HTTP request check email3 Membership</p>
+                                                                        <p>Then I receive valid HTTP response code 404</p>
+                                                                    <div class="examples">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="scenario-docs card" id="565028a84bd8281af5113988b858a76adf22d0c4ff9ad5d6f1ef9f811268048c">
+                                                                <div class="scenario-docs card-header undefined"
+                                                                     style="min-height:1.5em;">
+                                                                    <div>
+                                                            <span class="scenario-heading">
+                                                                <a href=""
+                                                                   title="View test results">Scenario: GET - Check Email Valid with invalid format email</a>
+                                                            </span>
+                                                                        <span class="scenario-result-icon">
+                                                                
+
+                                                                                <i class="fas fa-pause"
+                                                                                   title="No test has been implemented yet"></i>
+                                                            </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="scenario-docs card-body">
+                                                                        <p>Given I set GET api endpoints check email Membership</p>
+                                                                        <p>When I send GET HTTP request check email4 Membership</p>
+                                                                        <p>Then I receive valid HTTP response code 404</p>
+                                                                    <div class="examples">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="scenario-docs card" id="229bb316f09d8ae402ce76a4daba66f1adef0651422a25b9162de12923482d3a">
+                                                                <div class="scenario-docs card-header undefined"
+                                                                     style="min-height:1.5em;">
+                                                                    <div>
+                                                            <span class="scenario-heading">
+                                                                <a href=""
+                                                                   title="View test results">Scenario: PUT - Reset Password with vallid id</a>
+                                                            </span>
+                                                                        <span class="scenario-result-icon">
+                                                                
+
+                                                                                <i class="fas fa-pause"
+                                                                                   title="No test has been implemented yet"></i>
+                                                            </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="scenario-docs card-body">
+                                                                        <p>Given I set PUT api endpoints Reset Password Membership</p>
+                                                                        <p>When I send PUT HTTP request Reset Password1 Membership</p>
+                                                                        <p>Then I receive valid HTTP response code 400</p>
+                                                                    <div class="examples">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="scenario-docs card" id="d205bd0b77dc7d73f77c30cee82f3ae6b7ca50642f3fa2ea3de4375c176c5477">
+                                                                <div class="scenario-docs card-header undefined"
+                                                                     style="min-height:1.5em;">
+                                                                    <div>
+                                                            <span class="scenario-heading">
+                                                                <a href=""
+                                                                   title="View test results">Scenario: PUT - Reset Password with invalid id/email has not been registered</a>
+                                                            </span>
+                                                                        <span class="scenario-result-icon">
+                                                                
+
+                                                                                <i class="fas fa-pause"
+                                                                                   title="No test has been implemented yet"></i>
+                                                            </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="scenario-docs card-body">
+                                                                        <p>Given I set PUT api endpoints Reset Password Membership2</p>
+                                                                        <p>When I send PUT HTTP request Reset Password2 Membership</p>
+                                                                        <p>Then I receive valid HTTP response code 404</p>
+                                                                    <div class="examples">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="scenario-docs card" id="73c3653fcdc32469409982a8952e82685f8b84fefe2c8910f8ac7d1d94abd2f9">
+                                                                <div class="scenario-docs card-header undefined"
+                                                                     style="min-height:1.5em;">
+                                                                    <div>
+                                                            <span class="scenario-heading">
+                                                                <a href=""
+                                                                   title="View test results">Scenario: PUT - Reset Password with new password less than 8 characters</a>
+                                                            </span>
+                                                                        <span class="scenario-result-icon">
+                                                                
+
+                                                                                <i class="fas fa-pause"
+                                                                                   title="No test has been implemented yet"></i>
+                                                            </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="scenario-docs card-body">
+                                                                        <p>Given I set PUT api endpoints Reset Password Membership</p>
+                                                                        <p>When I send PUT HTTP request Reset Password3 Membership</p>
+                                                                        <p>Then I receive valid HTTP response code 400</p>
+                                                                    <div class="examples">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="scenario-docs card" id="bc987bf19530ed67b5544df3c33aa055dcb1e706e7790a775ae346aa86adabd0">
+                                                                <div class="scenario-docs card-header undefined"
+                                                                     style="min-height:1.5em;">
+                                                                    <div>
+                                                            <span class="scenario-heading">
+                                                                <a href=""
+                                                                   title="View test results">Scenario: PUT - Reset Password with empty on new password</a>
+                                                            </span>
+                                                                        <span class="scenario-result-icon">
+                                                                
+
+                                                                                <i class="fas fa-pause"
+                                                                                   title="No test has been implemented yet"></i>
+                                                            </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="scenario-docs card-body">
+                                                                        <p>Given I set PUT api endpoints Reset Password Membership</p>
+                                                                        <p>When I send PUT HTTP request Reset Password4 Membership</p>
+                                                                        <p>Then I receive valid HTTP response code 400</p>
+                                                                    <div class="examples">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="scenario-docs card" id="aec0dd73e02d622e73a734f0d8083609db4c55f3b6579a30d69cf61a964bd80d">
+                                                                <div class="scenario-docs card-header undefined"
+                                                                     style="min-height:1.5em;">
+                                                                    <div>
+                                                            <span class="scenario-heading">
+                                                                <a href=""
+                                                                   title="View test results">Scenario: PUT - Reset with the previous password</a>
+                                                            </span>
+                                                                        <span class="scenario-result-icon">
+                                                                
+
+                                                                                <i class="fas fa-pause"
+                                                                                   title="No test has been implemented yet"></i>
+                                                            </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="scenario-docs card-body">
+                                                                        <p>Given I set PUT api endpoints Reset Password Membership</p>
+                                                                        <p>When I send PUT HTTP request Reset Password5 Membership</p>
+                                                                        <p>Then I receive valid HTTP response code 400</p>
+                                                                    <div class="examples">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="results" class="tab-pane fade">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                                <div class="col-sm-12">
+
+                                                    <table class="table">
+                                                        <thead>
+                                                        <tr>
+                                                            <th scope="col">Scenario Results (including rows of test
+                                                                data)
+                                                            </th>
+                                                            <th scope="col" colspan="2" class="automated-stats">
+                                                                Automated
+                                                            </th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr>
+                                                                <td class="aggregate-result-count"><i
+                                                                            class='fa fa-check-circle-o success-icon'></i>&nbsp;Passing
+                                                                </td>
+                                                            <td class="automated-stats">0</td>
+                                                            <td class="automated-stats"> </td>
+                                                        </tr>
+                                                        <tr>
+                                                                <td class="aggregate-result-count"><i
+                                                                            class='fa fa-stop-circle-o pending-icon'></i>&nbsp;Pending
+                                                                </td>
+                                                            <td class="automated-stats">0</td>
+                                                            <td class="automated-stats"> </td>
+                                                        </tr>
+                                                        <tr>
+                                                                <td class="aggregate-result-count"><i
+                                                                            class='fa fa-ban ignored-icon'></i>&nbsp;Ignored
+                                                                </td>
+                                                            <td class="automated-stats">0</td>
+                                                            <td class="automated-stats"> </td>
+                                                        </tr>
+                                                        <tr>
+                                                                <td class="aggregate-result-count"><i
+                                                                            class='fa fa-fast-forward skip-icon'></i>&nbsp;Skipped
+                                                                </td>
+                                                            <td class="automated-stats">0</td>
+                                                            <td class="automated-stats"> </td>
+                                                        </tr>
+                                                        <tr>
+                                                                    <td colspan="3"><i
+                                                                                class='fa fa-times failure-icon'></i>&nbsp;<em>Unsuccessful</em></a>
+                                                                    </td>
+
+                                                        </tr>
+
+                                                        <tr>
+                                                                <td class="aggregate-result-count indented-error-category">
+                                                                    <i
+                                                                            class='fa fa-times-circle failure-icon'></i>&nbsp;Failed
+                                                                </td>
+                                                            <td class="automated-stats">0</td>
+                                                            <td class="automated-stats"> </td>
+                                                        <tr>
+                                                                <td class="aggregate-result-count indented-error-category">
+                                                                    <i
+                                                                            class='fa fa-exclamation-triangle error-icon'></i>&nbsp;Broken
+                                                                </td>
+                                                            <td class="automated-stats">0</td>
+                                                            <td class="automated-stats"> </td>
+                                                        <tr>
+                                                                <td class="aggregate-result-count indented-error-category">
+                                                                    <i
+                                                                            class='fa fa-chain-broken compromised-icon'></i>&nbsp;Compromised
+                                                                </td>
+                                                            <td class="automated-stats">0</td>
+                                                            <td class="automated-stats"> </td>
+                                                        </tr>
+                                                        <tr class="summary-stats">
+                                                            <td class="aggregate-result-count">Total</td>
+                                                            <td class="automated-stats">0</td>
+                                                            <td class="automated-stats"></td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <table class="table">
+                                                        <thead>
+                                                        <tr>
+                                                            <th>Execution Time</th>
+                                                            <th>Clock Time</th>
+                                                            <th>Fastest Test</th>
+                                                            <th>Slowest Test</th>
+                                                            <th>Average Execution Time</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td>0ms</td>
+                                                            <td>0ms</td>
+                                                            <td>0ms</td>
+                                                            <td>0ms</td>
+                                                            <td>0ms</td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <h3><i class="fas fa-cogs"></i> Automated Tests</h3>
+
+                                                        <table class="scenario-result-table table"
+                                                               id="scenario-results">
+                                                            <thead>
+                                                            <tr>
+                                                                <th class="test-name-column">Scenario</th>
+                                                                <th>Steps</th>
+                                                                <th>Started</th>
+                                                                <th>Duration</th>
+                                                                <th>Result</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr class="scenario-result UNDEFINED">
+                                                                    <td>
+                                                                            POST - Register with valid data data and endpoint
+                                                                    </td>
+                                                                    <td>3</td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td>
+                                                                            <i class="fas fa-pause"
+                                                                               title="No test has been implemented yet"></i>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result UNDEFINED">
+                                                                    <td>
+                                                                            POST - Register with invalid email format
+                                                                    </td>
+                                                                    <td>3</td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td>
+                                                                            <i class="fas fa-pause"
+                                                                               title="No test has been implemented yet"></i>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result UNDEFINED">
+                                                                    <td>
+                                                                            POST - Register without using email
+                                                                    </td>
+                                                                    <td>3</td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td>
+                                                                            <i class="fas fa-pause"
+                                                                               title="No test has been implemented yet"></i>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result UNDEFINED">
+                                                                    <td>
+                                                                            POST - Register without using password
+                                                                    </td>
+                                                                    <td>3</td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td>
+                                                                            <i class="fas fa-pause"
+                                                                               title="No test has been implemented yet"></i>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result UNDEFINED">
+                                                                    <td>
+                                                                            POST - Register using email that has been registered
+                                                                    </td>
+                                                                    <td>3</td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td>
+                                                                            <i class="fas fa-pause"
+                                                                               title="No test has been implemented yet"></i>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result UNDEFINED">
+                                                                    <td>
+                                                                            POST - Register with a password of less than 8 characters
+                                                                    </td>
+                                                                    <td>3</td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td>
+                                                                            <i class="fas fa-pause"
+                                                                               title="No test has been implemented yet"></i>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result UNDEFINED">
+                                                                    <td>
+                                                                            POST - Register with invalid endpoint
+                                                                    </td>
+                                                                    <td>3</td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td>
+                                                                            <i class="fas fa-pause"
+                                                                               title="No test has been implemented yet"></i>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result UNDEFINED">
+                                                                    <td>
+                                                                            POST - Login with a valid data and endpoint
+                                                                    </td>
+                                                                    <td>3</td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td>
+                                                                            <i class="fas fa-pause"
+                                                                               title="No test has been implemented yet"></i>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result UNDEFINED">
+                                                                    <td>
+                                                                            POST - Login with an incorrect email
+                                                                    </td>
+                                                                    <td>3</td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td>
+                                                                            <i class="fas fa-pause"
+                                                                               title="No test has been implemented yet"></i>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result UNDEFINED">
+                                                                    <td>
+                                                                            POST - Login with an incorrect password
+                                                                    </td>
+                                                                    <td>3</td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td>
+                                                                            <i class="fas fa-pause"
+                                                                               title="No test has been implemented yet"></i>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result UNDEFINED">
+                                                                    <td>
+                                                                            POST - Login with an unregistered email
+                                                                    </td>
+                                                                    <td>3</td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td>
+                                                                            <i class="fas fa-pause"
+                                                                               title="No test has been implemented yet"></i>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result UNDEFINED">
+                                                                    <td>
+                                                                            POST - Login with an empty email
+                                                                    </td>
+                                                                    <td>3</td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td>
+                                                                            <i class="fas fa-pause"
+                                                                               title="No test has been implemented yet"></i>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result UNDEFINED">
+                                                                    <td>
+                                                                            POST - Login with an empty password
+                                                                    </td>
+                                                                    <td>3</td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td>
+                                                                            <i class="fas fa-pause"
+                                                                               title="No test has been implemented yet"></i>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result UNDEFINED">
+                                                                    <td>
+                                                                            GET - Check Email Valid with valid email has been register
+                                                                    </td>
+                                                                    <td>3</td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td>
+                                                                            <i class="fas fa-pause"
+                                                                               title="No test has been implemented yet"></i>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result UNDEFINED">
+                                                                    <td>
+                                                                            GET - Check Email Valid with email has not been register
+                                                                    </td>
+                                                                    <td>3</td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td>
+                                                                            <i class="fas fa-pause"
+                                                                               title="No test has been implemented yet"></i>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result UNDEFINED">
+                                                                    <td>
+                                                                            GET - Check Email Valid with empty email
+                                                                    </td>
+                                                                    <td>3</td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td>
+                                                                            <i class="fas fa-pause"
+                                                                               title="No test has been implemented yet"></i>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result UNDEFINED">
+                                                                    <td>
+                                                                            GET - Check Email Valid with invalid format email
+                                                                    </td>
+                                                                    <td>3</td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td>
+                                                                            <i class="fas fa-pause"
+                                                                               title="No test has been implemented yet"></i>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result UNDEFINED">
+                                                                    <td>
+                                                                            PUT - Reset Password with vallid id
+                                                                    </td>
+                                                                    <td>3</td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td>
+                                                                            <i class="fas fa-pause"
+                                                                               title="No test has been implemented yet"></i>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result UNDEFINED">
+                                                                    <td>
+                                                                            PUT - Reset Password with invalid id/email has not been registered
+                                                                    </td>
+                                                                    <td>3</td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td>
+                                                                            <i class="fas fa-pause"
+                                                                               title="No test has been implemented yet"></i>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result UNDEFINED">
+                                                                    <td>
+                                                                            PUT - Reset Password with new password less than 8 characters
+                                                                    </td>
+                                                                    <td>3</td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td>
+                                                                            <i class="fas fa-pause"
+                                                                               title="No test has been implemented yet"></i>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result UNDEFINED">
+                                                                    <td>
+                                                                            PUT - Reset Password with empty on new password
+                                                                    </td>
+                                                                    <td>3</td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td>
+                                                                            <i class="fas fa-pause"
+                                                                               title="No test has been implemented yet"></i>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="scenario-result UNDEFINED">
+                                                                    <td>
+                                                                            PUT - Reset with the previous password
+                                                                    </td>
+                                                                    <td>3</td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td>
+                                                                            <i class="fas fa-pause"
+                                                                               title="No test has been implemented yet"></i>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <h3><i class="fas fa-edit"></i> Manual Tests</h3>
+
+                                                        No manual tests were recorded
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <span class="version">Serenity BDD version 2.6.0</span>
+                    </div>
+                </div>
+            </div>
+</body>
+</html>

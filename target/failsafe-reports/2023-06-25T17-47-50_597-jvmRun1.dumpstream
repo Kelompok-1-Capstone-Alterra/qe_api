@@ -1,0 +1,27 @@
+# Created at 2023-06-25T17:48:15.289
+Corrupted STDOUT by directly writing to native stream in forked JVM 1. Stream '#'.
+
+# Created at 2023-06-25T17:48:15.321
+Corrupted STDOUT by directly writing to native stream in forked JVM 1. Stream '# There is insufficient memory for the Java Runtime Environment to continue.'.
+
+# Created at 2023-06-25T17:48:15.329
+Corrupted STDOUT by directly writing to native stream in forked JVM 1. Stream '# Native memory allocation (malloc) failed to allocate 546096 bytes for Chunk::'.
+
+# Created at 2023-06-25T17:48:15.345
+Corrupted STDOUT by directly writing to native stream in forked JVM 1. Stream 'new'.
+
+# Created at 2023-06-25T17:48:15.353
+Corrupted STDOUT by directly writing to native stream in forked JVM 1. Stream '# An error report file with more information is saved as:'.
+
+# Created at 2023-06-25T17:48:15.353
+Corrupted STDOUT by directly writing to native stream in forked JVM 1. Stream '# C:\Users\Lenovo\IdeaProjects\capstone\hs_err_pid3736.log'.
+
+# Created at 2023-06-25T17:48:15.353
+Corrupted STDOUT by directly writing to native stream in forked JVM 1. Stream '#'.
+
+# Created at 2023-06-25T17:48:15.361
+Corrupted STDOUT by directly writing to native stream in forked JVM 1. Stream '# Compiler replay data is saved as:'.
+
+# Created at 2023-06-25T17:48:15.361
+Corrupted STDOUT by directly writing to native stream in forked JVM 1. Stream '# C:\Users\Lenovo\IdeaProjects\capstone\replay_pid3736.log'.
+
